@@ -3,16 +3,26 @@
     <div class="list-group">
       <a
         href="#"
+        [routerLink]="['/servers', server.id]"
+        [queryParams]="{ allowEdit: server.id === 3 ? '1' : '0' }"
+        [fragment]="'loading'"
         class="list-group-item"
-        *ngFor="let server of servers">
+        *ngFor="let server of servers"
+      >
         {{ server.name }}
       </a>
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
-    <app-edit-server></app-edit-server>
-    <hr>
-    <app-server></app-server>
+    <!-- <app-edit-server></app-edit-server>
+    <hr />
+    <app-server></app-server> -->
+    <!--to show child component-->
+    <router-outlet></router-outlet>
   </div>
 </div>
-
+<div class="row">
+  <div class="clo">
+    <button class="btn btn-primary" (click)="onReload()">Reload</button>
+  </div>
+</div>
